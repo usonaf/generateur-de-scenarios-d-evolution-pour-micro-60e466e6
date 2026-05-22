@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de Scénarios d&#x27;Évolution pour Micro-Entreprises | Simulez Votre Croissance</title>
+    <meta name="description" content="Explorez des trajectoires de croissance potentielles pour votre micro-entreprise, en simulant l">
+    <style>
+        :root {
+            --primary-color: #3f51b5;
+            --secondary-color: #f44336;
+            --background-color: #f0f2f5;
+            --card-background: #ffffff;
+            --text-color: #333333;
+            --header-font: 'Arial Black', sans-serif;
+            --body-font: 'Roboto', sans-serif;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --spacing-unit: 16px;
+        }
+
+        body {
+            font-family: var(--body-font);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--header-font);
+            color: var(--primary-color);
+            margin-top: 0;
+            line-height: 1.2;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: calc(2 * var(--spacing-unit)) 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+            margin-bottom: calc(2 * var(--spacing-unit));
+        }
+
+        header h1 {
+            color: #ffffff;
+            font-size: 2.8em;
+            margin-bottom: 0.2em;
+            letter-spacing: -0.03em;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-unit);
+            display: grid;
+            gap: calc(2 * var(--spacing-unit));
+            grid-template-columns: 1fr;
+        }
+
+        .card {
+            background-color: var(--card-background);
+            padding: calc(1.5 * var(--spacing-unit));
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .card h2 {
+            font-size: 1.8em;
+            margin-bottom: var(--spacing-unit);
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: var(--spacing-unit);
+        }
+
+        .input-group {
+            margin-bottom: var(--spacing-unit);
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5em;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .input-group input[type="number"],
+        .input-group select,
+        .input-group textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1em;
+            font-family: var(--body-font);
+        }
+
+        .input-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        button {
+            background-color: var(--secondary-color);
+            color: #ffffff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+            font-family: var(--header-font);
+            letter-spacing: 0.05em;
+        }
+
+        button:hover {
+            background-color: #d32f2f;
+            transform: translateY(-2px);
+        }
+
+        #tool-result {
+            margin-top: calc(2 * var(--spacing-unit));
+            border-top: 2px solid #e0e0e0;
+            padding-top: calc(2 * var(--spacing-unit));
+        }
+
+        #tool-result h3 {
+            color: var(--primary-color);
+            font-size: 1.6em;
+            margin-bottom: var(--spacing-unit);
+        }
+
+        #tool-result .result-category {
+            background-color: #f9f9f9;
+            border-left: 5px solid var(--primary-color);
+            padding: var(--spacing-unit);
+            margin-bottom: var(--spacing-unit);
+            border-radius: 4px;
+        }
+
+        #tool-result .result-category h4 {
+            color: var(--secondary-color);
+            margin-top: 0;
+            margin-bottom: 0.5em;
+            font-size: 1.2em;
+        }
+
+        #tool-result ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #tool-result ul li {
+            background-color: #ffffff;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            border: 1px solid #eee;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            font-size: 1.05em;
+        }
+
+        .seo-section {
+            background-color: #e3f2fd;
+            padding: calc(3 * var(--spacing-unit));
+            margin-top: calc(4 * var(--spacing-unit));
+            border-top: 5px solid var(--primary-color);
+            color: #424242;
+            text-align: center;
+        }
+
+        .seo-section h2 {
+            color: var(--primary-color);
+            font-size: 2em;
+            margin-bottom: var(--spacing-unit);
+        }
+
+        .seo-section p {
+            max-width: 900px;
+            margin: 0 auto 1.5em auto;
+            font-size: 1.1em;
+        }
+
+        .seo-section ul {
+            list-style: none;
+            padding: 0;
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .seo-section ul li {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            white-space: nowrap;
+            transition: background-color 0.3s ease;
+        }
+
+        .seo-section ul li:hover {
+            background-color: #283593;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                grid-template-columns: 1fr 1fr;
+            }
+            .full-width {
+                grid-column: span 2;
+            }
+        }
+        @media (min-width: 1024px) {
+            .container {
+                grid-template-columns: 2fr 1fr;
+            }
+            .full-width {
+                grid-column: span 2;
+            }
+            #tool-form {
+                grid-column: 1 / 2;
+            }
+            #tool-result {
+                grid-column: 2 / 3;
+                border-top: none;
+                padding-top: 0;
+            }
+        }
+    </style>
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://generateur-de-scenarios-d-evolution-pour-micro-60e466e6.onrender.com">
+    <meta property="og:title" content="Générateur de Scénarios d&#x27;Évolution pour Micro-Entreprises">
+    <meta property="og:description" content="Explorez des trajectoires de croissance potentielles pour votre micro-entreprise, en simulant l">
+    <meta property="og:url" content="https://generateur-de-scenarios-d-evolution-pour-micro-60e466e6.onrender.com">
+    <meta property="og:type" content="website">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Générateur de Scénarios d'Évolution pour Micro-Entreprises", "description": "Explorez des trajectoires de croissance potentielles pour votre micro-entreprise, en simulant l", "url": "https://generateur-de-scenarios-d-evolution-pour-micro-60e466e6.onrender.com", "applicationCategory": "UtilityApplication", "operatingSystem": "Web Browser"}</script>
+</head>
+<body data-site-slug="generateur-de-scenarios-d-evolution-pour-micro-60e466e6" data-runtime-mode="document_generator">
+    <header>
+        <h1>Générateur de Scénarios d'Évolution pour Micro-Entreprises</h1>
+        <p>Visualisez les futurs possibles de votre activité indépendante pour mieux planifier et prendre des décisions stratégiques.</p>
+    </header>
+
+    <div class="container">
+        <div class="card" id="tool-form">
+            <h2>Simulez Votre Croissance</h2>
+            <p>Explorez des trajectoires de croissance potentielles en simulant l'impact de différentes stratégies (prix, marché, produits).</p>
+            <form>
+                <div class="input-group">
+                    <label for="activite">Votre activité principale (ex: Consultant IT, Artisan Boulanger, Développeur Web) :</label>
+                    <input type="text" id="activite" value="Développeur Web" required>
+                </div>
+                <div class="input-group">
+                    <label for="revenuAnnuelActuel">Revenu Annuel Actuel Estimé (€) :</label>
+                    <input type="number" id="revenuAnnuelActuel" value="45000" min="0" required>
+                </div>
+                <div class="input-group">
+                    <label for="objectifCroissance">Objectif de Croissance Annuelle (%) :</label>
+                    <input type="number" id="objectifCroissance" value="15" min="0" max="100" required>
+                </div>
+                <div class="input-group">
+                    <label for="nombreAnnees">Horizon de Projection (années) :</label>
+                    <input type="number" id="nombreAnnees" value="3" min="1" max="10" required>
+                </div>
+                <div class="input-group">
+                    <label for="facteurOptimisme">Facteur d'Optimisme (1-5, 1=Prudent, 5=Très Audacieux) :</label>
+                    <input type="number" id="facteurOptimisme" value="3" min="1" max="5" required>
+                </div>
+                <div class="input-group">
+                    <label for="strategiesEnvisagees">Stratégies envisagées (mots-clés, séparés par des virgules, ex: nouveau produit, marketing digital, élargir clientèle, augmenter tarifs) :</label>
+                    <textarea id="strategiesEnvisagees">Nouveau service, Marketing ciblé, Partenariats stratégiques</textarea>
+                </div>
+
+                <button type="submit" id="tool-submit">Générer les Scénarios</button>
+            </form>
+        </div>
+
+        <div class="card full-width">
+            <h2>Résultats de Simulation</h2>
+            <div id="tool-result">
+                <p id="result-detail">Vos scénarios d'évolution apparaîtront ici après la simulation.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="seo-section">
+        <h2>Optimiser la Croissance de Votre Micro-Entreprise</h2>
+        <p>En tant qu'entrepreneur individuel, artisan, ou consultant en France, il est crucial d'anticiper les évolutions de votre activité. Notre générateur de scénarios vous aide à modéliser la croissance d'une petite structure en fonction de variables clés, offrant des perspectives synthétiques sur les risques et opportunités. Que vous soyez en phase de démarrage ou de consolidation, comprendre l'impact de vos décisions stratégiques (prix, marché, produits) est essentiel pour la pérennité de votre entreprise.</p>
+        <ul>
+            <li>Simulateur micro-entreprise</li>
+            <li>Prévisionnel entrepreneur individuel</li>
+            <li>Stratégie croissance TPE</li>
+            <li>Business plan micro-entreprise</li>
+            <li>Outil aide à la décision freelance</li>
+            <li>Modélisation financière indépendant</li>
+            <li>Développement activité auto-entrepreneur</li>
+            <li>Analyse de scénarios business</li>
+            <li>Planification stratégique PME</li>
+            <li>Gestion des risques entrepreneur</li>
+        </ul>
+    </div>
+
+    <script>
+        document.getElementById('tool-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const activite = document.getElementById('activite').value;
+            const revenuAnnuelActuel = parseFloat(document.getElementById('revenuAnnuelActuel').value);
+            const objectifCroissance = parseFloat(document.getElementById('objectifCroissance').value);
+            const nombreAnnees = parseInt(document.getElementById('nombreAnnees').value);
+            const facteurOptimisme = parseInt(document.getElementById('facteurOptimisme').value);
+            const strategiesEnvisagees = document.getElementById('strategiesEnvisagees').value.split(',').map(s => s.trim()).filter(s => s.length > 0);
+
+            let resultHtml = `<h3>Scénarios Proposés pour ${activite}</h3>`;
+
+            // Base de calcul de croissance
+            let croissanceBase = objectifCroissance / 100;
+            const optimismeFacteur = (facteurOptimisme - 1) * 0.05; // 0% à 20% additionnel
+
+            const scenarios = {
+                "Scénario Prudent": {
+                    multiplier: 0.8 - optimismeFacteur / 2, // Moins que l'objectif avec un ajustement par l'optimisme
+                    description: "Ce scénario envisage une croissance modérée, tenant compte des imprévus et d'une exécution conservatrice des stratégies."
+                },
+                "Scénario Réaliste": {
+                    multiplier: 1 + optimismeFacteur, // Proche de l'objectif avec l'optimisme
+                    description: "Une projection équilibrée, reflétant une mise en œuvre efficace des stratégies avec une part de risques maîtrisés."
+                },
+                "Scénario Ambitieux": {
+                    multiplier: 1.2 + optimismeFacteur * 1.5, // Au-delà de l'objectif avec un boost d'optimisme
+                    description: "Ce scénario explore le potentiel maximal en cas de succès majeur des stratégies et de conditions de marché très favorables."
+                }
+            };
+
+            for (const scenarioName in scenarios) {
+                const scenario = scenarios[scenarioName];
+                let revenuProjected = revenuAnnuelActuel;
+                let detailsProjection = [`Année 0: ${revenuAnnuelActuel.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' })}`];
+
+                for (let i = 1; i <= nombreAnnees; i++) {
+                    revenuProjected *= (1 + croissanceBase * scenario.multiplier);
+                    detailsProjection.push(`Année ${i}: ${revenuProjected.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' })}`);
+                }
+
+                resultHtml += `
+                    <div class="result-category">
+                        <h4>${scenarioName}</h4>
+                        <p>${scenario.description}</p>
+                        <ul>
+                            <li><strong>Revenu après ${nombreAnnees} ans :</strong> ${revenuProjected.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' })}</li>
+                            <li><strong>Croissance annuelle moyenne :</strong> ${(croissanceBase * scenario.multiplier * 100).toFixed(1)}%</li>
+                            <li><strong>Impact des stratégies :</strong> ${strategiesEnvisagees.length > 0 ? strategiesEnvisagees.join(', ') : 'Non spécifié'}</li>
+                            <li>Détails de la projection: ${detailsProjection.join(' | ')}</li>
+                        </ul>
+                    </div>
+                `;
+            }
+
+            document.getElementById('tool-result').innerHTML = resultHtml;
+        });
+    </script>
+<div id="qa-smoke-result" hidden></div>
+<script id="farmbuilder-affiliate-helper">
+(function () {
+  window.__UTILITY_AFFILIATE_MAP = window.__UTILITY_AFFILIATE_MAP || {};
+  document.addEventListener("click", function (event) {
+    const target = event.target.closest("[data-affiliate-slot]");
+    if (!target) return;
+    const slot = target.getAttribute("data-affiliate-slot");
+    const href = window.__UTILITY_AFFILIATE_MAP[slot];
+    if (!href) return;
+    if (target.tagName && target.tagName.toLowerCase() === "a") {
+      target.setAttribute("href", href);
+      target.removeAttribute("rel");
+      return;
+    }
+    event.preventDefault();
+    window.open(href, "_blank");
+  }, true);
+})();
+</script>
+<script id="farmbuilder-functional-qa">
+(function () {
+  function marker() {
+    let node = document.getElementById("qa-smoke-result");
+    if (node) return node;
+    node = document.createElement("div");
+    node.id = "qa-smoke-result";
+    node.hidden = true;
+    document.body.appendChild(node);
+    return node;
+  }
+
+  let qaFinished = false;
+  let qaWatchdog = null;
+
+  function normalize(text) {
+    return String(text || "").replace(/\s+/g, " ").trim();
+  }
+
+  function findForm() {
+    return document.getElementById("tool-form") || document.querySelector("form");
+  }
+
+  function findResult() {
+    return (
+      document.getElementById("tool-result") ||
+      document.querySelector("[data-result]") ||
+      document.querySelector(".tool-result, .result-card, .result, .results, .output, .preview, .diagnostic, .analysis")
+    );
+  }
+
+  function primaryAction(form) {
+    if (!form) return null;
+    return (
+      document.getElementById("tool-submit") ||
+      form.querySelector("#tool-submit") ||
+      form.querySelector("[data-primary-action]") ||
+      form.querySelector("button[type=submit]") ||
+      form.querySelector("button") ||
+      form.querySelector("input[type=submit]")
+    );
+  }
+
+  function resultSignature(node) {
+    if (!node) return "";
+    const text = normalize(node.textContent);
+    const html = normalize(node.innerHTML).slice(0, 600);
+    return `${text}||${html}`;
+  }
+
+  function resultHeadline(node) {
+    if (!node) return "";
+    const heading = node.querySelector("h1, h2, h3, strong, b");
+    return normalize(heading ? heading.textContent : "");
+  }
+
+  function sampleText(field) {
+    const key = `${field.id || ""} ${field.name || ""} ${field.placeholder || ""}`.toLowerCase();
+    if (/email/.test(key)) return "bonjour@example.com";
+    if (/url|site|website|lien/.test(key)) return "https://example.com/offre-solaire";
+    if (/phone|tel|mobile/.test(key)) return "0612345678";
+    if (/ville|city|localisation|location|region|departement|postal/.test(key)) return "Paris";
+    if (/orientation/.test(key)) return "sud";
+    if (/keyword|theme|topic|sujet|subject/.test(key)) return "energie solaire domestique";
+    if (/titre|title/.test(key)) return "Simulateur solaire maison";
+    if (/nom|name|project/.test(key)) return "Projet Horizon";
+    if (/description|notes|content|message/.test(key)) return "Maison individuelle exposee sud avec toiture exploitable.";
+    return field.placeholder || "France";
+  }
+
+  function sampleNumber(field) {
+    const key = `${field.id || ""} ${field.name || ""}`.toLowerCase();
+    if (/inclinaison|angle|slope/.test(key)) return "30";
+    if (/surface|size|m2|sqm/.test(key)) return "28";
+    if (/annee|year/.test(key)) return "2024";
+    if (/prix|price|budget|cost|amount|montant/.test(key)) return "12000";
+    const min = Number(field.min || "");
+    const max = Number(field.max || "");
+    if (Number.isFinite(min) && Number.isFinite(max) && max >= min) {
+      return String(Math.min(max, Math.max(min, min + Math.round((max - min) * 0.35))));
+    }
+    if (Number.isFinite(min)) return String(Math.max(min, 12));
+    if (Number.isFinite(max)) return String(Math.min(max, 12));
+    return field.value || "12";
+  }
+
+  function applySample(field) {
+    const tag = (field.tagName || "").toLowerCase();
+    const type = (field.type || "").toLowerCase();
+    if (field.disabled) return;
+    if (type === "hidden" || type === "submit" || type === "button" || type === "reset" || type === "image" || type === "file") {
+      return;
+    }
+    const currentValue = normalize(field.value);
+    if (tag === "select") {
+      if (currentValue) return;
+      const option = Array.from(field.options || []).find((item) => item.value && !item.disabled) || field.options[0];
+      if (option) field.value = option.value;
+      return;
+    }
+    if (type === "checkbox") {
+      if (field.checked) return;
+      field.checked = true;
+      return;
+    }
+    if (type === "radio") {
+      if (field.checked) return;
+      field.checked = true;
+      return;
+    }
+    if (type === "date") {
+      if (currentValue) return;
+      field.value = "2026-03-01";
+      return;
+    }
+    if (type === "email") {
+      if (currentValue) return;
+      field.value = "bonjour@example.com";
+      return;
+    }
+    if (type === "url") {
+      if (currentValue) return;
+      field.value = "https://example.com/offre-solaire";
+      return;
+    }
+    if (type === "tel") {
+      if (currentValue) return;
+      field.value = "0612345678";
+      return;
+    }
+    if (type === "color") {
+      if (currentValue) return;
+      field.value = "#2f855a";
+      return;
+    }
+    if (type === "number" || type === "range") {
+      if (currentValue) return;
+      field.value = sampleNumber(field);
+      return;
+    }
+    if (currentValue) return;
+    field.value = sampleText(field);
+  }
+
+  function stamp(status, detail, headline, primary) {
+    if (qaFinished) return;
+    qaFinished = true;
+    if (qaWatchdog) {
+      window.clearTimeout(qaWatchdog);
+      qaWatchdog = null;
+    }
+    const node = marker();
+    node.dataset.status = status;
+    node.dataset.mode = "native-form";
+    node.dataset.detail = detail || "";
+    node.dataset.headline = headline || "";
+    node.dataset.primary = primary || "";
+    node.dataset.viewport = window.innerWidth <= 640 ? "mobile" : "desktop";
+    window.setTimeout(function () {
+      try {
+        window.stop();
+      } catch (_error) {}
+    }, 0);
+  }
+
+  function installModalGuards() {
+    const noop = function () {};
+    const approve = function () { return true; };
+    const empty = function () { return ""; };
+    try { window.alert = noop; } catch (_error) {}
+    try { window.confirm = approve; } catch (_error) {}
+    try { window.prompt = empty; } catch (_error) {}
+  }
+
+  function triggerAction(form, action) {
+    try {
+      if (typeof form.requestSubmit === "function") {
+        form.requestSubmit(action || undefined);
+        return;
+      }
+    } catch (_error) {}
+    if (action && typeof action.click === "function") {
+      action.click();
+      return;
+    }
+    form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
+  }
+
+  function inspectResult(before, attemptsLeft) {
+    const result = findResult();
+    if (!result) {
+      stamp("fail", "La zone de resultat est introuvable.", "");
+      return;
+    }
+    const after = resultSignature(result);
+    const text = normalize(result.textContent);
+    if (after && after !== before && text.length >= 24) {
+      const primary = result.querySelector("a[href], button[data-href], [data-primary-url]") || document.querySelector("#tool-result a[href]");
+      stamp("pass", "Le formulaire natif a mis a jour la zone de resultat.", resultHeadline(result), primary ? (primary.getAttribute("href") || primary.getAttribute("data-primary-url") || "") : "");
+      return;
+    }
+    if (attemptsLeft > 0) {
+      window.setTimeout(function () {
+        inspectResult(before, attemptsLeft - 1);
+      }, 250);
+      return;
+    }
+    stamp("fail", "La zone de resultat n'a pas renvoye de contenu exploitable.", resultHeadline(result));
+  }
+
+  function runSmoke() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("__qa") !== "functional") return;
+    qaWatchdog = window.setTimeout(function () {
+      stamp("fail", "QA smoke timed out before the page reported a usable result.", "");
+    }, 7000);
+    const form = findForm();
+    if (!form) {
+      stamp("fail", "Le formulaire principal est introuvable.", "");
+      return;
+    }
+    const result = findResult();
+    const before = resultSignature(result);
+    installModalGuards();
+    try {
+      form.querySelectorAll("input, select, textarea").forEach(applySample);
+    } catch (error) {
+      stamp("fail", error && error.message ? `QA smoke sample failed: ${error.message}` : "QA smoke sample failed before submit.", "");
+      return;
+    }
+    const action = primaryAction(form);
+    try {
+      triggerAction(form, action);
+    } catch (error) {
+      stamp("fail", error && error.message ? `QA smoke submit failed: ${error.message}` : "QA smoke submit failed.", "");
+      return;
+    }
+    inspectResult(before, 10);
+  }
+
+  window.addEventListener("error", function (event) {
+    const message = event && event.message ? event.message : "JavaScript runtime error during QA smoke.";
+    stamp("fail", `QA smoke JS error: ${message}`, "");
+  }, { once: true });
+
+  window.addEventListener("unhandledrejection", function (event) {
+    const reason = event && event.reason;
+    const detail = typeof reason === "string"
+      ? reason
+      : reason && reason.message
+        ? reason.message
+        : "Unhandled promise rejection during QA smoke.";
+    stamp("fail", `QA smoke rejection: ${detail}`, "");
+  }, { once: true });
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function () {
+      window.setTimeout(runSmoke, 60);
+    }, { once: true });
+  } else {
+    window.setTimeout(runSmoke, 60);
+  }
+})();
+</script>
+</body>
+</html>
