@@ -1,0 +1,46 @@
+{
+  "name": "Générateur de Scénarios d'Évolution pour Micro-Entreprises",
+  "description": "Explorez des trajectoires de croissance potentielles pour votre micro-entreprise, en simulant l",
+  "theme": "generator",
+  "design_theme": "atlas-corporate",
+  "structure_preset": "evidence-journal",
+  "render_direction": "atlas-report",
+  "page_blueprint": "briefing-board",
+  "language": "fr",
+  "country": "FR",
+  "url": null,
+  "expected_url": "https://generateur-de-scenarios-d-evolution-pour-micro-60e466e6.onrender.com",
+  "created": "2026-05-22T20:32:20.798222+00:00",
+  "owner_user_id": "user-1774822953462",
+  "owner_username": "admin",
+  "owner_display_name": "Administrator",
+  "provider_space_id": "provider-space",
+  "provider_space_name": "Provider space",
+  "status": "generated",
+  "run_id": "run-1779481704230",
+  "external_site_request_id": null,
+  "external_client_ref": null,
+  "external_source_label": null,
+  "source_type": "generated",
+  "publish_target": "render",
+  "mode": "production",
+  "github": {
+    "status": "pending"
+  },
+  "deployment": {
+    "status": "pending"
+  },
+  "qa": {
+    "status": "pending"
+  },
+  "features": [
+    "Hero pattern: editorial",
+    "Proof module: rail",
+    "Design theme: Atlas Corporate",
+    "Render direction: Atlas Report",
+    "Page blueprint: Briefing Board",
+    "Runtime mode: document_generator",
+    "Generation mode: direct_html",
+    "Artifact rendered, awaiting QA and deployment"
+  ]
+}
